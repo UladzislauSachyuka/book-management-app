@@ -27,6 +27,8 @@ const AddBook: React.FC = () => {
         headers: authHeader(),
       }
       );
+
+      window.alert("Book successfully added!");
       
       navigate("/home");
     } catch (error) {

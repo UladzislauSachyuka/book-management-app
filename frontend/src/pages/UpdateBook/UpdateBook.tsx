@@ -37,6 +37,11 @@ const UpdateBook: React.FC = () => {
     event.preventDefault();
     setErrorMessage('');
 
+    if (readingStartDate && readingEndDate && readingEndDate < readingStartDate) {
+      setErrorMessage("End date cannot be earlier than start date.");
+      return;
+    }
+
     try {
       await axios.put(`http://localhost:8080/api/books/${id}`, {
         title,
@@ -48,6 +53,8 @@ const UpdateBook: React.FC = () => {
         headers: authHeader(),
       }
       );
+
+      window.alert("Book successfully updated!");
       
       navigate("/home");
     } catch (error) {
