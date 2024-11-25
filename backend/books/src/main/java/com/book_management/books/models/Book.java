@@ -1,7 +1,9 @@
 package com.book_management.books.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -12,8 +14,12 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 30)
     private String title;
 
+    @NotBlank
+    @Size(max = 30)
     private String author;
 
     private LocalDate readingStartDate;
